@@ -52,11 +52,11 @@ class TestBooksCollector:
         book_collector.add_book_in_favorites('Призрак оперы')
         assert book_collector.favorites == []
 
-    def test_add_book_in_favorites_book_already_in_favorites(self):
+    def test_add_book_in_favorites_book_already_in_favorites(self, favorite_books):
         collector = BooksCollector()
-        collector.favorites = ['Дом огней']
+        collector.favorites = favorite_books
         collector.add_book_in_favorites('Дом огней')
-        assert collector.favorites == ['Дом огней']
+        assert collector.favorites == ['Сияние', 'Серебряные облака', 'Дом огней']
 
     def test_delete_book_from_favorites_book_from_favorites(self, favorite_books):
         collector = BooksCollector()
@@ -64,8 +64,8 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Дом огней')
         assert collector.favorites == ['Сияние', 'Серебряные облака']
 
-    def test_get_list_of_favorites_books_exisiting_favorite_list(self, favorite_books):
+    def test_get_list_of_favorites_books_existing_favorite_list(self, favorite_books):
         collector = BooksCollector()
         collector.favorites = favorite_books
-        assert collector.favorites == ['Сияние', 'Серебряные облака', 'Дом огней']
+        assert collector.get_list_of_favorites_books() == ['Сияние', 'Серебряные облака', 'Дом огней']
 
