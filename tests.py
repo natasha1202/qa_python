@@ -19,7 +19,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Происхождение')
         collector.set_book_genre('Происхождение', 'Детективы')
-        assert collector.books_genre.get('Происхождение') == 'Детективы'
+        assert collector.get_books_genre().get('Происхождение') == 'Детективы'
 
     def test_get_book_genre_existing_book(self, book_collector):
         assert book_collector.get_book_genre('Двенадцать стульев') == 'Комедии'
